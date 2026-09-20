@@ -77,10 +77,11 @@ To run the bot, you'll need to configure a few sensitive variables. Here's how t
 - **`API_HASH`**: Your API Hash from [telegram.org](https://my.telegram.org/auth).
 - **`BOT_TOKEN`**: Get your bot token from [@BotFather](https://t.me/botfather).
 - **`OWNER_ID`**: Use [@missrose_bot](https://t.me/missrose_bot) to get your user ID by sending `/info`.
-- **`CHANNEL_ID`**: The ID of the channel for forced subscription.
 - **`LOG_GROUP`**: A group or channel where the bot logs messages. Forward a message to [@userinfobot](https://t.me/userinfobot) to get your channel/group ID.
-- **`MONGO_DB`**: A MongoDB URL for storing session data (recommended for security).
-  
+- **`MONGO_DB`**: MongoDB URL for storing session data. Set it as a private environment variable.
+
+If you deployed an earlier version with credentials embedded in `config.py`, revoke and replace the bot token and other exposed credentials. Removing them from the latest commit does not remove them from Git history.
+
 ### Additional Configuration Options:
 - **`STRING`**: (Optional) Add your **premium account session string** here to allow 4GB file uploads. This is **optional** and can be left empty if not used.
 - **`FREEMIUM_LIMIT`**: Default is `0`. Set this to any value you want to allow free users to extract content. If set to `0`, free users will not have access to any extraction features.

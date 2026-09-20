@@ -15,7 +15,7 @@
 import math
 import time , re
 from pyrogram import enums
-from config import CHANNEL_ID, OWNER_ID 
+from config import OWNER_ID
 from devgagan.core.mongo.plans_db import premium_users
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 import cv2
@@ -33,21 +33,9 @@ async def gen_link(app,chat_id):
    return link
 
 async def subscribe(app, message):
-   update_channel = CHANNEL_ID
-   url = await gen_link(app, update_channel)
-   if update_channel:
-      try:
-         user = await app.get_chat_member(update_channel, message.from_user.id)
-         if user.status == "kicked":
-            await message.reply_text("You are Banned. Contact -- @devgaganin")
-            return 1
-      except UserNotParticipant:
-        caption = f"Join our channel to use the bot"
-        await message.reply_photo(photo="https://graph.org/file/d44f024a08ded19452152.jpg",caption=caption, reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Join Now...", url=f"{url}")]]))
-        return 1
-      except Exception:
-         await message.reply_text("Something Went Wrong. Contact us @devgaganin...")
-         return 1
+    """Allow commands without requiring membership in another channel."""
+    return 0
+
 async def get_seconds(time_string):
     def extract_value_and_unit(ts):
         value = ""
